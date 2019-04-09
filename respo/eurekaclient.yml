@@ -8,6 +8,6 @@ management:
     web:
       exposure:
         include: refresh,health,info
-stuent: 
+student: 
   name: 张飞
   age: 18
