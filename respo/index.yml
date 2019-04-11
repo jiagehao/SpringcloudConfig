@@ -5,3 +5,35 @@ spring:
     name: index
   profiles:
     active: dev
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 251212
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: yewa
+    password: 251212
+  cloud:
+    config:
+      name: index,eureka
+      label: master
+      discovery:
+        enabled: true
+        serviceId: config
+    inetutils:
+      preferred-networks: 127.0.0.1
+    client:
+      ip-address: 127.0.0.1
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info,bus-refresh
